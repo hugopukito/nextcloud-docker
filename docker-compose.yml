@@ -1,0 +1,20 @@
+version: '3.9'
+
+services:
+  nextcloud:
+    image: nextcloud
+    container_name: nextcloud
+    volumes:
+      - /home/pukito/nextcloud:/var/www/html
+    ports:
+      - "8080:80"
+    networks:
+      - nextcloud_network
+    build: 
+      context: .
+      args:
+        - DNS=hugopukito.com 
+
+networks:
+  nextcloud_network:
+    driver: bridge

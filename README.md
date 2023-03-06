@@ -1,5 +1,7 @@
 # Dockerize your nextcloud
 
+Ajouter des variables pour le DNS & le reste
+
 ## Nginx
 
 ### /etc/nginx/nginx.conf
