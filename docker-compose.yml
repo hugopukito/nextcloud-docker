@@ -7,7 +7,7 @@ services:
     volumes:
       - /home/pukito/nextcloud:/var/www/html
     ports:
-      - "9090:80"
+      - "${PORT}:80"
     networks:
       - nextcloud_network
     build:

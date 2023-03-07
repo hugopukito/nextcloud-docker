@@ -15,6 +15,8 @@ DNS=*your_dns*
 
 ## Nginx
 
+Add this in your Nginx conf, nextcloud will not work without a reverse proxy doing ssl
+
 ### /etc/nginx/nginx.conf
 
 ```nginx
