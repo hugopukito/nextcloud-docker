@@ -1,15 +1,9 @@
-FROM nextcloud
+FROM alpine
 
-ARG DNS
+RUN apk add gettext
 
-COPY config/config.php /tmp/
-RUN sed -i "s/'installed' => false/'installed' => true/g" /tmp/config.php \
-    && sed -i "/'installed' => true/a \ \ 'forcessl' => true," /tmp/config.php \
-    && sed -i "/'installed' => true/a \ \ 'overwriteprotocol' => 'https'," /tmp/config.php \
-    && sed -i "/'trusted_domains' => \[/a \ \ 1 => '${DNS}'," /tmp/config.php \
-    && cp /tmp/config.php /var/www/html/config/
+COPY config.php /var/www/html/config/
 
-RUN echo "php_value upload_max_filesize 10G" >> /var/www/html/.user.ini \
-    && echo "php_value post_max_size 10G" >> /var/www/html/.user.ini \
-    && echo "php_value max_input_time 3600" >> /var/www/html/.user.ini \
-    && echo "php_value max_execution_time 3600" >> /var/www/html/.user.ini
+CMD envsubst -i /var/www/html/config/config.php
+
+COPY .user.ini /var/www/html/

@@ -3,17 +3,16 @@ version: '3.9'
 services:
   nextcloud:
     image: nextcloud
-    container_name: nextcloud
+    container_name: devops-nextcloud
     volumes:
       - /home/pukito/nextcloud:/var/www/html
     ports:
-      - "8080:80"
+      - "9090:80"
     networks:
       - nextcloud_network
-    build: 
+    build:
       context: .
-      args:
-        - DNS=hugopukito.com 
+      dockerfile: Dockerfile
 
 networks:
   nextcloud_network:

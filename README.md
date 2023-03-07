@@ -2,6 +2,17 @@
 
 Ajouter des variables pour le DNS & le reste
 
+## .env
+
+You need to create a .env file and declare the variables of the config.php like so:
+
+```bash
+SECRET=*your_secret*
+PASSWORDSALT=*your_passwordsalt*
+PORT=*your_port*
+DNS=*your_dns*
+```
+
 ## Nginx
 
 ### /etc/nginx/nginx.conf
